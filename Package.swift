@@ -3,31 +3,31 @@ import CompilerPluginSupport
 import PackageDescription
 
 let package = Package(
-    name: "swift-anamorphism-derivation",
+    name: "swift-anamorphism",
     products: [
-        .library(name: "Anamorphism Derivation", targets: ["Anamorphism Derivation"]),
-        .library(name: "Anamorphism Derivation Core", targets: ["Anamorphism Derivation Core"]),
+        .library(name: "Anamorphism Macro", targets: ["Anamorphism Macro"]),
+        .library(name: "Anamorphism Macro Core", targets: ["Anamorphism Macro Core"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/swift-molecules/swift-corecursive-derivation.git", branch: "main"),
+        .package(url: "https://github.com/swift-molecules/swift-corecursive.git", branch: "main"),
         .package(url: "https://github.com/swiftlang/swift-syntax.git", "603.0.2"..<"604.0.0"),
     ],
     targets: [
-        .target(name: "Anamorphism Derivation Core", dependencies: [
-            .product(name: "Corecursive Derivation Core", package: "swift-corecursive-derivation"),
+        .target(name: "Anamorphism Macro Core", dependencies: [
+            .product(name: "Corecursive Macro Core", package: "swift-corecursive"),
             .product(name: "SwiftSyntax", package: "swift-syntax"),
             .product(name: "SwiftSyntaxBuilder", package: "swift-syntax"),
         ]),
-        .macro(name: "Anamorphism Derivation Macros", dependencies: [
-            "Anamorphism Derivation Core",
+        .macro(name: "Anamorphism Macro Plugin", dependencies: [
+            "Anamorphism Macro Core",
             .product(name: "SwiftCompilerPlugin", package: "swift-syntax"),
             .product(name: "SwiftSyntax", package: "swift-syntax"),
             .product(name: "SwiftSyntaxMacros", package: "swift-syntax"),
         ]),
-        .target(name: "Anamorphism Derivation", dependencies: ["Anamorphism Derivation Macros"]),
+        .target(name: "Anamorphism Macro", dependencies: ["Anamorphism Macro Plugin"]),
         .testTarget(
-            name: "Anamorphism Derivation Tests",
-            dependencies: ["Anamorphism Derivation"]
+            name: "Anamorphism Macro Tests",
+            dependencies: ["Anamorphism Macro"]
         ),
     ],
     swiftLanguageModes: [.v6]

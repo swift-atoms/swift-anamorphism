@@ -1,4 +1,4 @@
-import Anamorphism_Derivation_Core
+import Anamorphism_Macro_Core
 import SwiftSyntax
 import SwiftSyntaxMacros
 public struct Macro: MemberMacro {
