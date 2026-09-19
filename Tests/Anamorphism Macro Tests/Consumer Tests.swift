@@ -1,6 +1,10 @@
+import Corecursive_Macro
+import Functor_Base_Macro
 import Anamorphism_Macro
 import Testing
 
+@Corecursive
+@FunctorBase
 @Anamorphism
 private indirect enum Natural {
     case zero
