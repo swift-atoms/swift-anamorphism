@@ -1,6 +1,6 @@
+import Anamorphism_Macro
 import Corecursive_Macro
 import Functor_Base_Macro
-import Anamorphism_Macro
 import Testing
 
 @Corecursive
@@ -14,7 +14,7 @@ private indirect enum Tree {
 private func leaves(_ tree: Tree) -> Int {
     switch tree {
     case .leaf: 1
-    case let .node(left, right): leaves(left) + leaves(right)
+    case .node(let left, let right): leaves(left) + leaves(right)
     }
 }
 

@@ -1,6 +1,6 @@
+import Anamorphism_Macro
 import Corecursive_Macro
 import Functor_Base_Macro
-import Anamorphism_Macro
 import Testing
 
 @Corecursive
